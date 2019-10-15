@@ -1,5 +1,5 @@
 # Worldwide-Food-and-Feed-Production
-Statistical Graphics Poster Project | 36-315: Statistical Graphics and Visualization
+Statistical Graphics Poster Project | 36-315: Statistical Graphics and Visualization | Spring 2018
 
 •	Analyzed as team of 4 a dataset of world food/feed production from 1961-2013 with 60+ variables and 21,478 observations through graphics in order to report key insights on poster for public presentation to faculty members. 
 
