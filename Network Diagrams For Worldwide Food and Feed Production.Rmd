@@ -1,0 +1,91 @@
+---
+title: "Network Diagrams"
+author: "Gordon Wang"
+date: "April 9, 2018"
+output: html_document
+---
+
+# Initial steps
+```{r}
+# Read in the data
+fao <- read.csv("FAO.csv")
+
+# Remove NA's
+fao <- fao[complete.cases(fao),]
+
+# Write helper function to sum up total production from 1961 to 2013 by row
+production_counter <- function(x, df){sum(df[x,11:63])}
+
+# Subset based on Food vs Feed
+fao_food <- fao[fao$Element == "Food",]
+fao_feed <- fao[fao$Element == "Feed",]
+```
+
+
+# Prepare biggest food data
+```{r}
+# Add Column of Total Production by Area of Biggest Food (Milk Excluding Butter)
+by_milk_food <- fao_food[fao_food$Item.Code == 2848,]
+
+total_milk_production = NULL  # initialize object for total production
+for(j in 1:nrow(by_milk_food)){
+  total_milk_production[j] <- production_counter(x = j, df = by_milk_food)
+}
+
+by_milk_food <- cbind(by_milk_food, total_milk_production)
+
+# Sort by_milk_food by largest amount of total production in decreasing order
+ordered_milk <- by_milk_food[with(by_milk_food, order(-total_milk_production)),]
+
+# Examine only the 10 biggest milk producers for simplicity, and filter out unneeded columns
+ordered_milk_10 <- ordered_milk[1:10,-c(1,2,4,5,6,7,8,9,10,64)]
+
+# Transpose dataframe to examine relations between countries not years
+names <- ordered_milk_10$Area
+ordered_milk_10 <- as.data.frame(t(ordered_milk_10[,-1]))
+colnames(ordered_milk_10) <- names
+colnames(ordered_milk_10) <- c("USA", "India", "Germany", "Pakistan", "France", "Brazil", "U.K.", "Italy", "China", "Poland")
+```
+
+
+# Prepare biggest feed data
+```{r}
+# Add Column of Total Production by Area of Biggest Feed (Cereal Excluding Beer)
+by_cereal_feed <- fao_feed[fao_feed$Item.Code == 2905,]
+
+total_cereal_production = NULL   # initialize object for total production
+for(i in 1:nrow(by_cereal_feed)){
+  total_cereal_production[i] <- production_counter(x = i, df = by_cereal_feed)
+}
+
+by_cereal_feed <- cbind(by_cereal_feed, total_cereal_production)
+
+# Sort by_cereal_feed by largest amount of total production in decreasing order
+ordered_cereal <- by_cereal_feed[with(by_cereal_feed, order(-total_cereal_production)),]
+
+# Examine only the 10 biggest cereal producers for simplicity, and filter out unneeded columns
+ordered_cereal_10 <- ordered_cereal[1:10,-c(1,2,4,5,6,7,8,9,10,64)]
+names2 <- ordered_cereal_10$Area
+
+# Transpose data frame so relations between countries not years can be examined
+ordered_cereal_10 <- as.data.frame(t(ordered_cereal_10[,-1]))
+colnames(ordered_cereal_10) <- names2
+colnames(ordered_cereal_10) <- c("USA", "China", "Germany", "Brazil", "Canada", "France", "Poland", "Japan", "Spain", "Italy")
+```
+
+
+# Plot network diagram for top 10 producers of the most heavily produced food
+```{r}
+# Load qgraph package
+library(qgraph)
+
+# Plot partial correlation network diagram
+qgraph(round(cor(ordered_milk_10),5), graph = "pcor", layout = "spring", labels = colnames(ordered_milk_10), title = "Partial Correlations Among Top 10 Producers of Milk (Excluding Butter) for 1961-2013", filetype = "png", filename = "milk_network_diagram")
+```
+
+# Plot network diagram for top 10 producers of the most heavily produced feed
+```{r}
+# Plot partial correlation network diagram
+qgraph(round(cor(ordered_cereal_10),5), graph = "pcor", layout = "spring", labels = colnames(ordered_cereal_10), title = "Partial Correlations Among Top 10 Producers of Cereal (Excluding Beer) for 1961-2013", filetype = "png", filename = "cereal_network_diagram")
+```
+
