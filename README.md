@@ -8,9 +8,9 @@ Statistical Graphics Poster Project | 36-315: Statistical Graphics and Visualiza
 • Objective of graphics was to ask: "Do correlations between countries' food/feed production reveal any meaningful relationships?"
 
 
-• Dataset can be accessed here: https://www.kaggle.com/dorbicycle/world-foodfeed-production or by downloading FAO.csv directly above, which is necessary to run the code.
+Dataset can be accessed here: https://www.kaggle.com/dorbicycle/world-foodfeed-production or by downloading FAO.csv directly above, which is necessary to run the code.
 
-•	The network diagrams and the code for them are above, the former in the .png files and latter in RMarkdown file.
+The network diagrams and the code for them are above, the former in the .png files and latter in RMarkdown file.
 
-• The final poster that our team presented can be accessed above as well.
+The final poster that our team presented can be accessed above as well.
 
