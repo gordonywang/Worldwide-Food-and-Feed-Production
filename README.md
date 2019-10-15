@@ -9,6 +9,8 @@ Statistical Graphics Poster Project | 36-315: Statistical Graphics and Visualiza
 
 
 • Dataset can be accessed here: https://www.kaggle.com/dorbicycle/world-foodfeed-production or by downloading FAO.csv directly above, which is necessary to run the code.
+
 •	The network diagrams are contained in the files milk_network_diagram.png and cereal_network_diagram.png above.
+
 • The final poster that our team presented is in the PDF file titled "Final Poster - Worldwide Food and Feed Production".
 
