@@ -6,5 +6,6 @@ Statistical Graphics Poster Project | 36-315: Statistical Graphics and Visualiza
 •	Applied R’s qgraph package to create network diagrams (25% of project’s graphics) to visualize relationships among top 10 producers of top produced food cereal and among top 10 producers of top produced feed milk in terms of partial correlations among each countries’ trend in yearly production totals. (I only used 10 countries for each network diagram due to size constraint of poster.) 
 
 •	The network diagrams are contained in the files milk_network_diagram.png and cereal_network_diagram.png above.
+
 • The final poster that our team presented is in the PDF file titled "Final Poster - Worldwide Food and Feed Production".
 
