@@ -11,7 +11,7 @@ Objective was to ask: "Do correlations between countries' food/feed production r
 
 Dataset can be accessed here: https://www.kaggle.com/dorbicycle/world-foodfeed-production or by downloading FAO.csv directly above, which is necessary to run the code.
 
-Network diagrams and the code for them are above, the former in the .png files and latter in RMarkdown file. (Note: the network diagrams differ between .png files and final poster because the qgraph package has updated the way it displays networks)
+Network diagrams and the code for them are above, the former in the .png files and latter in RMarkdown file. (Note: the network diagrams differ between .png files and final poster because the qgraph package has updated how it displays networks)
 
 Final poster that our team presented can be accessed above as well.
 
